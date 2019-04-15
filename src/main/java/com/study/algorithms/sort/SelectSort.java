@@ -1,5 +1,8 @@
 package com.study.algorithms.sort;
 
+import java.nio.channels.SelectionKey;
+import java.util.Objects;
+
 /**
  * @program: fourth
  * @className: SelectSort
@@ -8,16 +11,36 @@ package com.study.algorithms.sort;
  * @create: 2019-04-09 09:20
  * @version: v1.0
  **/
-public class SelectSort {
+public class SelectSort<T extends Comparable<T>> extends BaseSort {
 
+    @Override
+    public void sort(Comparable[] array) {
 
-    /**
-     * 简单排序算法，采用升序排序
-     * @param array
-     * @param <T>
-     */
-    public <T extends Comparable<T>> void sort(T[] array) {
+        if (Objects.isNull(array) || array.length == 0) {
+            return;
+        }
 
+        for (int i = 0; i < array.length; ++i) {
+            int min = i;
 
+            for (int j = i + 1; j < array.length; ++j) {
+                if (less(array[j], array[min])) {
+                    min = j;
+                }
+            }
+
+            swap(array, i, min);
+
+        }
     }
+
+    public static void main(String[] args) {
+        SelectSort<Integer> selectSort = new SelectSort<>();
+
+        Integer[] arrays = {1, 4, 2, 8, 7};
+        selectSort.sort(arrays);
+
+        selectSort.show(arrays);
+    }
+
 }
