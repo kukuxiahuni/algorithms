@@ -1,6 +1,5 @@
 package com.study.algorithms.sort;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -54,19 +53,6 @@ public class MergeSort<T extends Comparable<T>> extends BaseSort {
         int i = lo;
         int j = mid + 1;
 
-//        for (int k = lo; k <= hi; ++k) {
-//
-//            if (i > mid) {
-//                a[k] = tmp[j++];
-//            } else if (j > hi) {
-//                a[k] = tmp[i++];
-//            } else if (less(a[i], a[j])) {
-//                a[k] = tmp[i++];
-//            } else {
-//                a[k] = tmp[j++];
-//            }
-//
-//        }
 
         Comparable[] tmp = new Comparable[len];
         int index = 0;
