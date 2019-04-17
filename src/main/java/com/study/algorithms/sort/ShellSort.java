@@ -46,7 +46,7 @@ public class ShellSort<T extends Comparable<T>> extends BaseSort {
     public static void main(String[] args) {
         ShellSort<Integer> selectSort = new ShellSort<>();
 
-        Integer[] arrays = {1, 4, 2, 8, 7, 0};
+        Integer[] arrays = {-1,-2,4, -5};
         selectSort.sort(arrays);
 
         selectSort.show(arrays);
