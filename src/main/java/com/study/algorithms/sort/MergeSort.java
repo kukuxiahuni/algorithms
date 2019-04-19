@@ -1,6 +1,9 @@
 package com.study.algorithms.sort;
 
+import javax.xml.transform.Source;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.stream.Stream;
 
 /**
  * @program: fourth
@@ -34,7 +37,35 @@ public class MergeSort<T extends Comparable<T>> extends BaseSort {
 
         mergeSort(array, lo, mid);
         mergeSort(array, mid + 1, hi);
-        merge(array, lo, mid, hi);
+        mergeH(array, lo, mid, hi);
+    }
+
+    private final void mergeH(Comparable[] a, int lo, int mid, int hi) {
+        int len = hi - lo + 1;
+        int i = lo;
+        int j = mid + 1;
+
+        Comparable[] tmp = new Comparable[a.length];
+        for (int k = lo; k <= hi; ++k) {
+            tmp[k] = a[k];
+        }
+
+        for (int index = lo; index <= hi; ++index) {
+
+            //1. 左半区用完了
+            if (i > mid) {
+                a[index] = tmp[j++];
+            } else if (j > hi) {
+                a[index] = tmp[i++];
+            } else if (less(tmp[i], tmp[j])) {
+                a[index] = tmp[i++];
+            } else {
+                a[index] = tmp[j++];
+            }
+
+        }
+
+
     }
 
     /**
@@ -84,8 +115,10 @@ public class MergeSort<T extends Comparable<T>> extends BaseSort {
 
         Integer[] arrays = {-1, -2, 4, -5};
         selectSort.sort(arrays);
-
+////
         selectSort.show(arrays);
+
+//        selectSort.mergeH(arrays, 0, 2, arrays.length - 2);
     }
 
 }
