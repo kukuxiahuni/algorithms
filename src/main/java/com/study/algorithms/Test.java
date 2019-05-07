@@ -9,4 +9,7 @@ package com.study.algorithms;
  * @version: v1.0
  **/
 public class Test {
+   public static void main(String[] args) {
+       System.out.println("hha");
+   } 
 }
